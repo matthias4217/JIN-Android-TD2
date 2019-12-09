@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.tasks_fragment.view.*
 
 class TasksFragment : Fragment() {
 
@@ -17,10 +17,10 @@ class TasksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val recyclerView = container!!.findViewById<RecyclerView>(R.id.tasks_recycler_view)
         val adapter = TasksAdapter(tasks)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        return inflater.inflate(R.layout.tasks_fragment, container)
+        val view = inflater.inflate(R.layout.tasks_fragment, container, false)
+        view.tasks_recycler_view.adapter = adapter
+        view.tasks_recycler_view.layoutManager = LinearLayoutManager(context)
+        return view
     }
 }
